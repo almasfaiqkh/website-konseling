@@ -1,0 +1,903 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap');
+@media (max-width: 768px) {
+    .container {
+        margin-top: -30px;
+        height: auto;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    body {
+        padding-top: 10px;
+    }
+
+    .d-flex.justify-content-center {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    h1 {
+        top: -30px;
+        font-size: 24px;
+    }
+
+    #confessionText {
+        font-size: 16px;
+    }
+
+    .confession-wrapper,
+    .expert-container {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .confession-card {
+        width: calc(50% - 10px);
+        max-width: 140px;
+    }
+
+    .expert-card {
+        flex: 1 1 calc(50% - 20px);
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        margin-top: -40px;
+    }
+
+    body {
+        padding-top: 5px;
+        /* Lebih dekat ke atas */
+    }
+
+    h1 {
+        top: -40px;
+        font-size: 22px;
+    }
+
+    .confession-card {
+        width: 100%;
+        min-width: unset;
+        flex: none;
+    }
+
+    .expert-card {
+        flex: 1 1 100%;
+    }
+
+    #back-button {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+    }
+}
+
+html,
+body {
+    overflow-x: hidden;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background: url('../images/bg.jpg') no-repeat center center/cover;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    position: relative;
+}
+
+/* Overlay untuk meningkatkan kontras teks */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: -1;
+}
+
+/* Heading */
+h1 {
+    margin-top: 0;
+    padding-top: 10px;
+    font-size: 3rem;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
+    text-align: center;
+    /* Agar tetap di tengah */
+}
+
+/* Styling untuk teks deskripsi */
+.sub-heading {
+    font-size: 1.2rem;
+    /* Bisa disesuaikan */
+    font-weight: 300;
+    /* Lebih ringan dari judul */
+    color: white;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+    line-height: 1.6;
+    /* Memberi jarak antar baris */
+    text-align: center;
+    max-width: 600px;
+    /* Supaya tidak terlalu melebar */
+    margin: 0 auto 20px;
+    /* Posisi tengah dengan jarak ke bawah */
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+}
+
+/* Animasi Fade-in */
+.fade-in {
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.lang-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #6a5acd;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.lang-btn:hover {
+    background: #483d8b;
+}
+
+.disclaimer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 10px 0;
+}
+
+
+.disclaimer p {
+    margin: 2px 0;
+    /* Jarak antar paragraf kecil */
+}
+
+.disclaimer strong {
+    color: rgba(255, 255, 255, 0.9);
+    /* Warna lebih terang sedikit untuk teks bold */
+}
+
+/* Styling untuk konten artikel */
+.article-box {
+    max-width: 900px;
+    margin: 50px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+/* Styling untuk teks artikel */
+.article-box h1,
+.article-box h2,
+.article-box h3 {
+    color: #2c3e50;
+    font-weight: bold;
+}
+
+#article-content h1,
+#article-content h2,
+#article-content h3,
+#article-content p {
+    text-shadow: none !important;
+}
+
+.article-box h1 {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.article-box h2 {
+    margin-top: 25px;
+    font-size: 22px;
+}
+
+.article-box h3 {
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.article-box p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+/* Styling untuk list di artikel */
+.article-box ul {
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.article-box ul li {
+    margin-bottom: 5px;
+}
+
+
+.confession-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    max-width: 100%;
+}
+
+/* Confession Card */
+.confession-card {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    width: 150px;
+    cursor: pointer;
+    flex: 1 1 calc(25% - 10px);
+    /* Maksimal 4 card dalam satu baris */
+    min-width: 140px;
+    /* Pastikan tidak terlalu kecil */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.confession-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    transition: 0.3s ease-in-out;
+}
+
+.icon-box {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+/* Confession Card Text */
+.confession-card h4 {
+    color: #8b658b;
+    font-weight: 600;
+    text-shadow: 1px 1px 4px rgba(255, 255, 255, 0.8);
+    transition: color 0.3s ease-in-out;
+}
+
+.confession-card:hover h4 {
+    color: #a17c6b;
+}
+
+/* Confession & Expert Box */
+.confession-box,
+.expert-box {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 20px;
+    max-width: 500px;
+    margin: 20px auto;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.confession-box h3 {
+    margin-bottom: 20px;
+}
+
+#confession {
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+/* Confession List */
+#confession-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    max-width: 85vw;
+    margin: auto;
+    align-items: flex-start;
+}
+
+/* Animasi Bubble */
+@keyframes floatBubble {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Confession Bubble */
+.confession-bubble {
+    background: white;
+    border-radius: 50px;
+    padding: 15px 20px;
+    width: fit-content;
+    min-width: 0px;
+    margin: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    position: relative;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    animation: floatBubble 3s ease-in-out infinite;
+}
+
+/* Timestamp pada Bubble */
+.confession-timestamp {
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    font-size: 12px;
+    color: gray;
+    font-weight: 400;
+}
+
+/* Variasi Animasi */
+.confession-bubble:nth-child(odd) {
+    animation-duration: 3.5s;
+    animation-delay: 0.5s;
+}
+
+.confession-bubble:nth-child(even) {
+    animation-duration: 2.8s;
+    animation-delay: 0.2s;
+}
+
+/* Efek Awan */
+.confession-bubble::before,
+.confession-bubble::after {
+    content: "";
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+}
+
+.confession-bubble::before {
+    width: 40px;
+    height: 40px;
+    top: -20px;
+    left: 30px;
+}
+
+.confession-bubble::after {
+    width: 30px;
+    height: 30px;
+    bottom: -15px;
+    right: 20px;
+}
+
+.expert-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    max-width: 100%;
+}
+
+.expert-card {
+    flex: 1 1 calc(33.33% - 20px);
+    max-width: 250px;
+    aspect-ratio: 1/1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Gambar di Expert Card */
+.expert-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    /* Agar gambar selalu pas */
+    margin-bottom: 10px;
+}
+
+/* Nama Expert */
+.expert-card h5 {
+    font-weight: 600;
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+/* Tombol Expert */
+.expert-card a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    background: #6a5acd;
+    padding: 10px;
+    border-radius: 6px;
+    margin-top: auto;
+    /* Supaya tombol selalu di bawah */
+    width: 100%;
+    text-align: center;
+}
+
+/* Submit Confession Button */
+.btn-submit {
+    width: 100%;
+    font-size: 16px;
+    font-weight: 600;
+    background: #6a5acd;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+/* Tombol Submit saat dihover */
+.btn-submit:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Hover Effect */
+.expert-card a:hover,
+.btn-submit:hover {
+    background: #483d8b;
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Back to Menu Button */
+#back-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: #6a5acd;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+}
+
+#back-button::before {
+    content: '\2302';
+    font-size: 20px;
+}
+
+#back-button:hover {
+    background: #483d8b;
+}
+
+/* ======================================================= */
+/* ==   LOGIKA TAMPILAN CONTACT (LIGHT vs DARK MODE)    == */
+/* ======================================================= */
+
+/* Style untuk link contact agar terlihat seperti tombol */
+.expert-card .btn-contact-direct {
+    display: block;
+    text-decoration: none;
+    color: white;
+    background: #6a5acd;
+    padding: 10px;
+    border-radius: 6px;
+    margin-top: auto;
+    width: 100%;
+    text-align: center;
+    transition: background 0.3s ease;
+}
+
+.expert-card .btn-contact-direct:hover {
+    background: #483d8b;
+}
+
+/* --- ATURAN UTAMA --- */
+
+/* Default (Light Mode): Tampilkan link langsung, sembunyikan tombol popup */
+.expert-card .btn-contact-direct {
+    display: block;
+}
+
+.expert-card .btn-open-modal {
+    display: none;
+}
+
+/* Saat Dark Mode Aktif: Balikkan tampilannya */
+body.dark-mode .expert-card .btn-contact-direct {
+    display: none;
+    /* Sembunyikan link langsung */
+}
+
+body.dark-mode .expert-card .btn-open-modal {
+    display: block;
+    /* Tampilkan tombol untuk membuka popup */
+}
+
+/* Style untuk Tombol "Kirim via WhatsApp" */
+.expert-card .btn-contact-expert {
+    display: block;
+    text-decoration: none;
+    color: white;
+    background: #28a745;
+    /* Warna hijau untuk kirim */
+    padding: 10px;
+    border-radius: 6px;
+    width: 100%;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.expert-card .btn-contact-expert:hover {
+    background: #1e7e34;
+}
+
+/* === CSS UNTUK MODAL POPUP === */
+
+/* Latar belakang gelap semi-transparan */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    display: none;
+    /* Awalnya disembunyikan */
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Konten popup di tengah */
+.modal-content {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+/* Tombol close (X) */
+.modal-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: #888;
+}
+
+.modal-content h3 {
+    margin-top: 0;
+    font-size: 16px;
+    color: #666;
+}
+
+.modal-content h4 {
+    margin-top: -10px;
+    margin-bottom: 15px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#modal-textarea {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+/* Tombol kirim di dalam popup */
+.btn-send-whatsapp {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    background: #28a745;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-send-whatsapp:hover {
+    background: #1e7e34;
+}
+
+.expert-card .btn-open-modal {
+    /* Properti visual untuk membuatnya terlihat seperti tombol kita */
+    text-decoration: none;
+    color: white;
+    background: #6a5acd;
+    /* Warna ungu utama */
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+
+    /* Properti layout agar sama dengan tombol di light mode */
+    margin-top: auto;
+    width: 100%;
+    text-align: center;
+
+    /* Properti font agar konsisten */
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    /* Sesuaikan jika perlu */
+
+    /* Efek transisi */
+    transition: background 0.3s ease;
+}
+
+.expert-card .btn-open-modal:hover {
+    background: #483d8b;
+}
+
+/* Style untuk textarea dan tombol di kartu ahli */
+.expert-card textarea {
+    width: 100%;
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+.expert-card .btn-contact-expert {
+    display: block;
+    text-decoration: none;
+    color: white;
+    background: #6a5acd;
+    padding: 10px;
+    border-radius: 6px;
+    margin-top: auto;
+    width: 100%;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.expert-card .btn-contact-expert:hover {
+    background: #483d8b;
+}
+
+/* =================================== */
+/* ==   STYLES FOR DARK MODE      == */
+/* =================================== */
+
+/* 1. Style untuk Tombol Pengalih (Toggle Switch) */
+.dark-mode-switch {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 34px;
+    display: inline-block;
+    z-index: 99;
+}
+
+.dark-mode-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+    /* Sesuaikan dengan tinggi */
+}
+
+/* Lingkaran slider (default/light mode) */
+.slider:before {
+    position: absolute;
+    content: "☀️";
+    /* Ikon matahari */
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+
+    /* Untuk menengahkan ikon */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+}
+
+/* Warna track slider saat aktif (dark mode) */
+input:checked+.slider {
+    background-color: #6a5acd;
+}
+
+/* Lingkaran slider saat aktif (dark mode) */
+input:checked+.slider:before {
+    transform: translateX(26px);
+    /* Efek geser */
+    content: "🌙";
+    /* Ikon bulan */
+}
+
+/* 2. Aturan Warna untuk Mode Gelap */
+body.dark-mode {
+    background: url('../images/night_mode.jpg') no-repeat center center/cover;
+    ;
+    /* Latar belakang gelap pekat */
+}
+
+/* Hapus overlay gambar agar tidak bentrok */
+body.dark-mode::before {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+/* Ubah warna latar belakang elemen-elemen utama */
+body.dark-mode .confession-card,
+body.dark-mode .expert-card,
+body.dark-mode .confession-box,
+body.dark-mode .expert-box,
+body.dark-mode .article-box,
+body.dark-mode .confession-bubble {
+    background: #1e1e1e;
+    /* Warna latar kartu menjadi gelap */
+    border: 1px solid #444;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Ubah warna teks yang tadinya gelap menjadi terang */
+body.dark-mode .article-box h1,
+body.dark-mode .article-box h2,
+body.dark-mode .article-box h3,
+body.dark-mode .article-box p,
+body.dark-mode .expert-card h5,
+body.dark-mode .confession-box h3,
+body.dark-mode .expert-box h3,
+body.dark-mode .confession-bubble {
+    color: #e0e0e0;
+}
+
+body.dark-mode .article-box h1,
+body.dark-mode .article-box h2,
+body.dark-mode .article-box h3,
+body.dark-mode .article-box p {
+    font-family: 'Lato', sans-serif;
+}
+
+/* Ubah warna teks judul pada kartu */
+body.dark-mode .confession-card h4 {
+    color: #FFFFFF;
+    text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .confession-card:hover h4 {
+    color: #d6bfff;
+}
+
+/* Pastikan bubble dan awannya juga gelap */
+body.dark-mode .confession-bubble::before,
+body.dark-mode .confession-bubble::after {
+    background: #1e1e1e;
+}
+
+/* Ubah warna placeholder pada textarea */
+body.dark-mode #confession::placeholder {
+    color: #888;
+}
+
+/* PERBAIKAN: Style untuk Textarea di Mode Gelap */
+body.dark-mode #confession {
+    background-color: #2c2c2c;
+    border-color: #555;
+    color: #e0e0e0;
+}
+
+/* =================================== */
+/* ==   END STYLES FOR DARK MODE  == */
+/* =================================== */
+
+/* ================================================================= */
+/* ==   STYLE ADAPTIF (LIGHT/DARK MODE) UNTUK MODAL POPUP   == */
+/* ================================================================= */
+
+/* --- Dark Mode Styles untuk Modal --- */
+
+/* Latar belakang dan border modal menjadi gelap */
+body.dark-mode .modal-content {
+    background-color: #1e1e1e;
+    border: 1px solid #444;
+}
+
+/* Warna teks judul dan nama ahli di modal menjadi terang */
+body.dark-mode .modal-content h3,
+body.dark-mode .modal-content h4 {
+    color: #e0e0e0;
+}
+
+/* Warna tombol close (X) di modal menjadi terang */
+body.dark-mode .modal-close-btn {
+    color: #bbb;
+}
+
+/* Warna kotak input teks (textarea) di modal */
+body.dark-mode #modal-textarea {
+    background-color: #2c2c2c;
+    border-color: #555;
+    color: #e0e0e0;
+    /* Warna teks yang diketik pengguna */
+}
+
+/* Warna teks placeholder di textarea saat dark mode */
+body.dark-mode #modal-textarea::placeholder {
+    color: #888;
+}

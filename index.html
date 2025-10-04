@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confession and Counseling Space</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="shortcut icon" href="assets/icons/favicon.png" type="image/x-icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container d-flex justify-content-center align-items-center vh-100 fade-in"
+        style="background: url('your-background-image.jpg') no-repeat center center/cover;">
+        <div class="text-center">
+            <h1 class="fw-bold text-white">Confess your feelings!</h1>
+            <p class="sub-heading text-light" id="confessionText">
+                Bersama ahli atau ungkapkan isi hatimu <br>
+                Mulai confession-mu sekarang!
+            </p>
+            <div class="confession-wrapper">
+                <div class="confession-card fade-in" onclick="showConfession('expert')">
+                    <div class="icon-box">💡</div>
+                    <h4>Expert</h4>
+                </div>
+                <div class="confession-card fade-in" onclick="showConfession('anonymous')">
+                    <div class="icon-box">📝</div>
+                    <h4>Anonym</h4>
+                </div>
+                <div class="confession-card fade-in" onclick="showConfession('article')">
+                    <div class="icon-box">📄</div>
+                    <h4>Article</h4>
+                </div>
+                <div class="confession-card fade-in">
+                    <div class="icon-box">❓</div>
+                    <h4>Question (soon)</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container d-none fade-in text-center" id="anonymous-form">
+        <div class="confession-box p-4 mx-auto">
+            <h3 class="text-center">Confess Anonymously</h3>
+            <form id="confessForm" method="POST">
+                <textarea id="confession" class="form-control" rows="3"
+                    placeholder="Type your confession..."></textarea>
+                <input type="submit" id="submit" class="btn-submit" value="Send Confession">
+            </form>
+        </div>
+    </div>
+
+    <div class="container d-none fade-in text-center" id="expert-list">
+        <div class="expert-box p-4 mx-auto">
+            <h3 class="text-center">Choose an Expert</h3>
+            <div class="expert-container d-flex flex-wrap justify-content-center">
+                <div class="expert-card">
+                    <img src="assets/images/ahli1.jpg" alt="Expert 1">
+                    <h5>Dr. H. M. Bambang Edi Susyanto, Sp.A., M.Kes</h5>
+
+                    <a class="btn-contact-direct" href="https://wa.me/628156967510" target="_blank"
+                        rel="noopener noreferrer">
+                        Contact
+                    </a>
+
+                    <button class="btn-open-modal" data-nama-ahli="Dr. H. M. Bambang Edi Susyanto"
+                        data-nomor-ahli="628156967510">
+                        Contact
+                    </button>
+                </div>
+
+                <div class="expert-card">
+                    <img src="assets/images/ahli2.jpg" alt="Expert 2">
+                    <h5>Shanti Warda Ns., M. Kep., Sp. Jiwa., PH, D</h5>
+
+                    <a class="btn-contact-direct" href="https://wa.me/6281393068151" target="_blank"
+                        rel="noopener noreferrer">
+                        Contact
+                    </a>
+
+                    <button class="btn-open-modal" data-nama-ahli="Shanti Warda" data-nomor-ahli="6281393068151">
+                        Contact
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container d-none fade-in text-center" id="confession-results">
+        <div class="confession-box2 p-4 mx-auto">
+            <h3 class="text-center"></h3>
+            <div id="confession-list"></div>
+        </div>
+    </div>
+
+    <div class="container d-none fade-in text-center" id="article-results">
+        <div id="article-content"></div>
+    </div>
+
+    <!-- <button id="lang-switch" class="lang-btn">EN</button> -->
+    <button id="back-button" class="d-none"></button>
+
+    <label class="dark-mode-switch">
+        <input type="checkbox" id="darkModeToggle">
+        <span class="slider"></span>
+    </label>
+
+    <div class="disclaimer">
+        <p>Presented By <strong>KKN 040 UMY 2025 & BES</strong> | Project By <strong>Almas Fa'iq Khairul Ikhwan & Amin
+                Febryansyah</strong></p>
+    </div>
+
+    <div id="whatsapp-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button id="modal-close-btn" class="modal-close-btn">&times;</button>
+            <h3>Tulis Pesan untuk:</h3>
+            <h4 id="modal-expert-name">Nama Ahli</h4>
+            <textarea id="modal-textarea" class="form-control" rows="5"
+                placeholder="Ketik pesan Anda di sini..."></textarea>
+            <button id="modal-send-btn" class="btn-send-whatsapp">Kirim via WhatsApp</button>
+            <input type="hidden" id="modal-expert-phone">
+        </div>
+    </div>
+
+    <script src="assets/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+<footer></footer>
+
+</html>
